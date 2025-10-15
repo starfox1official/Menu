@@ -3,1638 +3,1331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کافه نوش‌جان | بخش مطالعه</title>
-    
-    <!-- فونت‌های زیبای فارسی از گوگل فونت -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>کافه کتاب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* ==================== CSS Variables ==================== */
-        :root {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #2d2d2d;
-            --bg-card: #252525;
-            --text-primary: #f5f5f5;
-            --text-secondary: #b8b8b8;
-            --accent-gold: #d4af37;
-            --accent-emerald: #50c878;
-            --shadow: rgba(0, 0, 0, 0.3);
-            --shadow-glow: rgba(212, 175, 55, 0.4);
-            --border-radius: 16px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            
-            /* فونت‌های جدید */
-            --font-heading: 'El Messiri', 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --font-body: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --font-accent: 'Scheherazade New', 'Noto Naskh Arabic', serif;
-            --font-decorative: 'El Messiri', cursive;
-        }
-
-        /* Light Theme */
-        [data-theme="light"] {
-            --bg-primary: #f8f9fa;
-            --bg-secondary: #ffffff;
-            --bg-card: #ffffff;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --shadow-glow: rgba(212, 175, 55, 0.3);
-        }
-
-        /* ==================== Global Styles ==================== */
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: var(--font-body);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            transition: var(--transition);
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            width: 100%;
             overflow-x: hidden;
-            font-weight: 400;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ==================== Header Styles ==================== */
-        .header {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
-            padding: 1.5rem 1rem;
-            box-shadow: 0 8px 32px var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
+        .container {
+            width: 100%;
+            max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
         }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            animation: fadeInDown 0.8s ease-out;
+        h1, .product-name {
+            font-family: 'Playfair Display', serif;
         }
 
-        .logo {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-emerald));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 8px 25px var(--shadow-glow);
-            transition: var(--transition);
-        }
-
-        .logo:hover {
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        .cafe-name {
-            font-size: 3rem;
-            font-weight: 700;
-            font-family: var(--font-heading);
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-emerald));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-        }
-
-        /* Search & Theme Toggle */
-        .search-container {
+        #search {
+            margin-bottom: 20px;
+            padding: 10px;
             width: 100%;
-            max-width: 700px;
-            position: relative;
-            display: flex;
-            gap: 1.2rem;
-            align-items: center;
-            justify-content: center;
+            max-width: 600px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #1e1e1e;
+            color: #ffffff;
         }
 
-        .search-box {
-            flex: 1;
-            padding: 1.1rem 1.5rem 1.1rem 3.5rem;
-            border: 2px solid transparent;
-            background: var(--bg-card);
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-family: var(--font-body);
-            color: var(--text-primary);
-            transition: var(--transition);
-            box-shadow: 0 4px 15px var(--shadow);
-            font-weight: 400;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 6px 25px var(--shadow-glow);
-            transform: translateY(-2px);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.3rem;
-            color: var(--accent-gold);
-            pointer-events: none;
-        }
-
-        .theme-toggle {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            background: var(--bg-card);
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.4rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px var(--shadow);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 6px 25px var(--shadow-glow);
-        }
-
-        /* ==================== Category Filter ==================== */
-        .category-filter {
-            background: var(--bg-secondary);
-            padding: 1.8rem 1rem;
-            box-shadow: 0 4px 20px var(--shadow);
-            overflow-x: auto;
-            scrollbar-width: thin;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            margin-top: 0;
-        }
-
-        .category-filter::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .category-filter::-webkit-scrollbar-track {
-            background: var(--bg-card);
-            border-radius: 10px;
-        }
-
-        .category-filter::-webkit-scrollbar-thumb {
-            background: var(--accent-gold);
-            border-radius: 10px;
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            justify-items: center;
         }
 
         .category-tabs {
-            max-width: 1400px;
-            margin: 0 auto;
             display: flex;
-            gap: 1.2rem;
             justify-content: center;
+            gap: 1rem;
+            margin-bottom: 20px;
+            overflow-x: auto;
             flex-wrap: wrap;
-        }
-
-        .category-btn {
-            padding: 1rem 2.2rem;
-            border: 2px solid var(--accent-gold);
-            background: transparent;
-            color: var(--text-primary);
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-family: var(--font-body);
-            font-weight: 600;
-            transition: var(--transition);
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .category-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -100%;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            transition: var(--transition);
+            padding: 5px 0;
+            scrollbar-width: none;
         }
 
-        .category-btn:hover::before {
-            right: 100%;
-        }
-
-        .category-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px var(--shadow-glow);
-        }
-
-        .category-btn.active {
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-emerald));
-            color: #1a1a1a;
-            border-color: transparent;
-            box-shadow: 0 6px 25px var(--shadow-glow);
-        }
-
-        /* ==================== Results Counter ==================== */
-        .results-info {
-            max-width: 1400px;
-            margin: 2.5rem auto 1.5rem;
-            padding: 0 1rem;
-            text-align: center;
-            font-size: 1.3rem;
-            font-family: var(--font-body);
-            color: var(--text-secondary);
-            animation: fadeIn 0.6s ease-out;
-            font-weight: 500;
-        }
-
-        .results-info span {
-            color: var(--accent-gold);
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        /* ==================== Products Grid ==================== */
-        .products-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            min-height: 60vh;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        /* ==================== Product Card ==================== */
-        .product-card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 8px 25px var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            height: 180px;
-            opacity: 1;
-            cursor: pointer;
-        }
-
-        .product-card.non-matching {
-            opacity: 0.5;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px var(--shadow-glow);
-        }
-
-        .product-image {
-            width: 40%;
-            height: 100%;
-            object-fit: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            flex-shrink: 0;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 0.8rem;
-            left: 0.8rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-family: var(--font-body);
-            font-weight: bold;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .badge-new {
-            background: rgba(80, 200, 120, 0.9);
-            color: white;
-        }
-
-        .badge-popular {
-            background: rgba(255, 107, 107, 0.9);
-            color: white;
-        }
-
-        .product-info {
-            padding: 1.2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            font-family: var(--font-heading);
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            font-family: var(--font-accent);
-            color: var(--accent-gold);
-            text-align: left;
-            margin-top: 0.5rem;
-            transition: color 0.5s ease;
-        }
-
-        /* ==================== Product Details Section ==================== */
-        .product-details {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: var(--bg-secondary);
-            padding: 1.2rem;
-            border-radius: var(--border-radius);
-            transform: translateX(-100%);
-            opacity: 0;
-            transition: all 0.5s ease;
-            z-index: 5;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-
-        .product-card.active .product-details {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .details-section {
-            margin-bottom: 1.2rem;
-        }
-
-        .details-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .details-title {
-            font-size: 0.9rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-        }
-
-        .product-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-family: var(--font-body);
-            line-height: 1.5;
-            font-weight: 400;
-            margin-bottom: 0.8rem;
-        }
-
-        .ingredients-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .ingredient-item {
-            background: var(--bg-primary);
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .product-card.active .product-price {
-            color: transparent;
-            animation: priceReveal 1s ease 0.5s forwards;
-        }
-
-        @keyframes priceReveal {
-            0% { color: transparent; }
-            100% { color: var(--accent-gold); }
-        }
-
-        .product-description mark {
-            background: var(--accent-gold);
-            color: #1a1a1a;
-            padding: 0 4px;
-            border-radius: 3px;
-            font-weight: 600;
-        }
-
-        /* ==================== Skeleton Loading ==================== */
-        .skeleton {
-            background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-secondary) 50%, var(--bg-card) 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-            border-radius: var(--border-radius);
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .skeleton-card {
-            height: 180px;
-        }
-
-        /* ==================== Empty State ==================== */
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            animation: fadeIn 0.6s ease-out;
-            grid-column: 1 / -1;
-        }
-
-        .empty-state-icon {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-
-        .empty-state h3 {
-            font-size: 2rem;
-            font-family: var(--font-heading);
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-
-        .empty-state p {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            font-family: var(--font-body);
-            font-weight: 400;
-        }
-
-        /* ==================== Info Sections ==================== */
-        .info-sections {
-            max-width: 1400px;
-            margin: 4rem auto 0;
-            padding: 0 1rem;
-        }
-
-        .info-section {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 25px var(--shadow);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-family: var(--font-heading);
-            color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 700;
-        }
-
-        .section-title i {
-            font-size: 1.5rem;
-        }
-
-        /* Hours Section */
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .hour-item {
-            background: var(--bg-card);
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .day {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .time {
-            color: var(--accent-emerald);
-            font-weight: 500;
-        }
-
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .gallery-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            height: 200px;
-            position: relative;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Amenities Section */
-        .amenities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .amenity-item {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: var(--transition);
-        }
-
-        .amenity-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px var(--shadow);
-        }
-
-        .amenity-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-emerald));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .amenity-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .amenity-text p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        /* ==================== Study Section ==================== */
-        .study-section {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 25px var(--shadow);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .pdf-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .pdf-item {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 4px 15px var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .pdf-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px var(--shadow-glow);
-        }
-
-        .pdf-cover {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pdf-cover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .pdf-icon {
-            font-size: 4rem;
-            color: white;
-            z-index: 2;
-        }
-
-        .pdf-info {
-            padding: 1.5rem;
-        }
-
-        .pdf-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            font-family: var(--font-heading);
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-            line-height: 1.4;
-        }
-
-        .pdf-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-family: var(--font-body);
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .pdf-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.2rem;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-emerald));
-            color: #1a1a1a;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-family: var(--font-body);
-        }
-
-        .pdf-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px var(--shadow-glow);
-        }
-
-        /* ==================== PDF Viewer Modal ==================== */
-        .pdf-modal {
+        .category-tabs::-webkit-scrollbar {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
-            backdrop-filter: blur(5px);
         }
 
-        .pdf-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .pdf-modal-content {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            width: 95%;
-            height: 95%;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        .pdf-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-card);
-            border-bottom: 1px solid var(--bg-primary);
-        }
-
-        .pdf-modal-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .pdf-modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
+        .category-tab {
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 20px;
             cursor: pointer;
-            transition: var(--transition);
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            color: #ffffff;
+            flex-shrink: 0;
         }
 
-        .pdf-modal-close:hover {
-            background: var(--bg-primary);
-            color: var(--text-primary);
+        .category-tab:hover {
+            background-color: #444;
+            transform: translateY(-2px);
         }
 
-        .pdf-modal-body {
-            flex: 1;
-            padding: 0;
-            overflow: hidden;
+        .category-tab.active {
+            background-color: #e91e63;
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
         }
 
-        .pdf-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* ==================== Footer ==================== */
-        .footer {
-            background: var(--bg-secondary);
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-top: 4rem;
-            box-shadow: 0 -4px 20px var(--shadow);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            color: var(--text-secondary);
-            font-family: var(--font-body);
-        }
-
-        .footer-content h3 {
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-            font-family: var(--font-heading);
-            font-weight: 600;
-        }
-
-        .footer-content p {
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        /* ==================== Animations ==================== */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ==================== Responsive Design ==================== */
-        @media (max-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
-        }
-
+        /* Mobile adjustments */
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 1.5rem;
+            body {
+                padding: 10px;
             }
-            .cafe-name {
-                font-size: 2.2rem;
+            
+            .menu-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
             }
-            .logo {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-            }
+            
             .category-tabs {
-                justify-content: center;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
-            .product-name {
-                font-size: 1.1rem;
-            }
-            .product-price {
-                font-size: 1.2rem;
+                gap: 0.5rem;
             }
             
-            /* بهبود هدر برای موبایل */
-            .header {
-                padding: 1rem;
-            }
-            
-            .header-content {
-                gap: 1rem;
-            }
-            
-            .search-container {
-                flex-direction: row;
-                width: 100%;
-                gap: 0.8rem;
-            }
-            
-            .search-box {
-                padding: 0.9rem 1.2rem 0.9rem 3rem;
-                font-size: 1rem;
-            }
-            
-            .search-icon {
-                right: 1.2rem;
-                font-size: 1.1rem;
-            }
-            
-            .theme-toggle {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-            
-            /* حفظ طرح یکسان برای موبایل - تصویر در سمت راست، اطلاعات در سمت چپ */
-            .product-card {
-                height: 160px;
-            }
-            .product-image {
-                width: 35%;
-            }
-            .product-info {
-                padding: 1rem;
-            }
-            .results-info {
-                font-size: 1.1rem;
-            }
-            .results-info span {
-                font-size: 1.3rem;
-            }
-            .info-section {
-                padding: 1.5rem;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-            .amenities-grid {
-                grid-template-columns: 1fr;
-            }
-            .pdf-grid {
-                grid-template-columns: 1fr;
-            }
-            .pdf-modal-content {
-                width: 98%;
-                height: 98%;
+            .category-tab {
+                padding: 8px 16px;
+                font-size: 14px;
             }
         }
 
         @media (max-width: 480px) {
-            .products-grid {
+            .menu-container {
                 grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .header-content {
-                gap: 0.8rem;
-            }
-            .category-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            .category-tabs {
-                justify-content: center;
-            }
-            .cafe-name {
-                font-size: 1.8rem;
-            }
-            .product-card {
-                height: 150px;
-            }
-            .product-image {
-                width: 40%;
-            }
-            .product-info {
-                padding: 0.8rem;
-            }
-            .product-name {
-                font-size: 1rem;
-                -webkit-line-clamp: 2;
-            }
-            .product-price {
-                font-size: 1.1rem;
-            }
-            .info-section {
-                padding: 1rem;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .hour-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            
-            /* بهینه‌سازی بیشتر هدر برای موبایل‌های کوچک */
-            .search-container {
-                gap: 0.5rem;
-            }
-            
-            .search-box {
-                padding: 0.8rem 1rem 0.8rem 2.8rem;
-                font-size: 0.9rem;
-            }
-            
-            .search-icon {
-                right: 1rem;
-                font-size: 1rem;
-            }
-            
-            .theme-toggle {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
             }
         }
 
-        /* ==================== Print Styles ==================== */
-        @media print {
-            .header, .category-filter, .theme-toggle, .search-container {
-                display: none;
-            }
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .product-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-            body {
-                background: white;
-                color: black;
-            }
-        }
-
-        /* ==================== Accessibility ==================== */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
+        .product-card {
+            position: relative;
+            background-color: #1e1e1e;
+            border-radius: 8px;
             overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(50px);
+            display: none;
+            width: 100%;
+            max-width: 300px;
+            touch-action: pan-y;
         }
 
-        /* Focus Styles */
-        *:focus-visible {
-            outline: 2px solid var(--accent-gold);
-            outline-offset: 2px;
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: scale(1.03);
+            z-index: 10;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .product-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .product-price {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .product-details {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            transition: bottom 0.5s ease;
+            z-index: 1;
+        }
+
+        .product-details.active {
+            bottom: 0;
+        }
+
+        .product-description {
+            font-size: 13px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .product-allergies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .allergy-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .allergy-icon {
+            margin-left: 5px;
+            font-size: 14px;
+        }
+
+        .product-card.expanded .product-info {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .product-card.expanded .product-details {
+            bottom: 0;
+        }
+
+        /* Discount style if applicable */
+        .product-price del {
+            color: #ff0000;
+            margin-left: 5px;
+        }
+
+        .product-price .discounted {
+            color: #00ff00;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Improved Drag effects */
+        .product-card.dragging {
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            z-index: 100;
+        }
+
+        .heart-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 60px;
+            color: rgba(233, 30, 99, 0.8);
+            z-index: 5;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-shadow: 0 0 10px #000000;
+            pointer-events: none;
+        }
+
+        .cross-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 60px;
+            color: rgba(255, 0, 0, 0.8);
+            z-index: 5;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+
+        .show-heart .heart-overlay {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .show-cross .cross-overlay {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .heart-filled {
+            color: #e91e63;
+        }
+
+        .cross-filled {
+            color: #ff0000;
+        }
+
+        /* Special info sections styles */
+        .info-container {
+            width: 100%;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-section {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .info-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-section h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .info-section ul, .info-section p {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            color: #dddddd;
+        }
+
+        .info-section li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-section li::before {
+            content: '✓';
+            margin-left: 10px;
+            color: #e91e63;
+        }
+
+        .hours-list li::before {
+            content: none;
+        }
+
+        .address-map {
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .address-map:hover {
+            color: #66b3ff;
+        }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .notification.error {
+            background-color: #f44336;
+        }
+
+        .favorite-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e91e63;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            z-index: 3;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Drag boundary indicators */
+        .drag-boundary {
+            position: absolute;
+            top: 0;
+            width: 30%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .drag-boundary.left {
+            left: 0;
+            background: linear-gradient(to right, rgba(233, 30, 99, 0.2), transparent);
+        }
+        
+        .drag-boundary.right {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 0, 0, 0.2), transparent);
+        }
+        
+        .product-card.show-boundaries .drag-boundary {
+            opacity: 1;
+        }
+        
+        /* Hours Card Styles - Matching site theme */
+        .hours-card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 100%;
+            max-width: 10000px;
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        
+        .hours-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hours-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .hours-header h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 1.8s infinite;
+        }
+        
+        .status-open {
+            background: #4CAF50;
+            box-shadow: 0 0 12px #4CAF50, 0 0 30px rgba(76, 175, 80, 0.12);
+        }
+        
+        .status-closed {
+            background: #f44336;
+            box-shadow: 0 0 12px #f44336, 0 0 30px rgba(244, 67, 54, 0.12);
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(.9);
+                opacity: .9;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(.9);
+                opacity: .9;
+            }
+        }
+        
+        .hours-card .time {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #e91e63;
+        }
+        
+        .hours-card .status {
+            font-size: 14px;
+            margin: 5px 0;
+            padding: 5px 10px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        
+        .status-open-text {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+        
+        .status-closed-text {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+        }
+        
+        .hours-card .next-opening {
+            font-size: 12px;
+            color: #8ca0b3;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- ==================== Header Section ==================== -->
-    <header class="header">
-        <div class="header-content">
-            <!-- Logo & Cafe Name -->
-            <div class="logo-section">
-                <div class="logo">☕</div>
-                <h1 class="cafe-name">کافه نوش‌جان</h1>
+    <div class="container">
+        <input type="text" id="search" placeholder="جستجو...">
+        
+        <div class="category-tabs">
+            <div class="category-tab active" data-category="Drinks">نوشیدنی‌ها</div>
+            <div class="category-tab" data-category="Appetizers">پیش غذا</div>
+            <div class="category-tab" data-category="Main Courses">غذای اصلی</div>
+            <div class="category-tab" data-category="Desserts">دسر</div>
+            <div class="category-tab" data-category="Specials">ویژه</div>
+            <div class="category-tab" data-category="Books">کتاب‌ها</div>
+            <div class="category-tab" data-category="Favorites">علاقه‌مندی‌ها ❤️</div>
+        </div>
+        <div class="menu-container">
+            <!-- Drinks -->
+            <div class="product-card" data-category="Drinks" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://www.thespruceeats.com/thmb/HXaU0FwlEoZ6d5MoPVzGCXKx41k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/85153452-56a176765f9b58b7d0bf84dd.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-name">اسپرسو</div>
+                    <div class="product-price">۴.۵۰ دلار <del>۵.۰۰ دلار</del></div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">اسپرسوی غلیظ و قوی، مناسب برای افزایش انرژی. ساخته شده از دانه‌های عربیکای مرغوب.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">☕</span>کافئین</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>شیر (در صورت اضافه کردن)</span>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Search Box & Theme Toggle -->
-            <div class="search-container">
-                <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم"> 🌙 </button>
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-box" id="searchInput" placeholder="جستجوی محصولات (نام، توضیحات، تگ...)..." aria-label="جستجوی محصولات">
+
+            <div class="product-card" data-category="Drinks" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://tchibo.us/cdn/shop/articles/cappucino.jpg?v=1690196460&width=1440');"></div>
+                <div class="product-info">
+                    <div class="product-name">کاپوچینو</div>
+                    <div class="product-price">۴.۰۰ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">اسپرسو با شیر بخارپز و فوم، با پودر کاکائو.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">☕</span>کافئین</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>شیر</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="Drinks" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://loghme.life/wp-content/uploads/2024/02/Strawberry_smoothie_blog_lg.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-name">اسموتی توت</div>
+                    <div class="product-price">۵.۹۹ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">توت‌های مخلوط شده، ماست و عسل برای یک نوشیدنی تازه.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>ماست (لبنی)</span>
+                        <span class="allergy-item"><span class="allergy-icon">🍓</span>توت‌ها</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="Drinks" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://cafekojayi.ir/wp-content/uploads/2024/06/late.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-name">لاته</div>
+                    <div class="product-price">۴.۲۰ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">اسپرسو با شیر بخارپز.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">☕</span>کافئین</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>شیر</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="Drinks" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://drjafargholi.com/wp-content/uploads/2021/01/green-tea-properties.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-name">چای سبز</div>
+                    <div class="product-price">۳.۰۰ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">چای سبز تازه.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">☕</span>کافئین</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appetizers -->
+            <div class="product-card" data-category="Appetizers" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?caesar+salad');"></div>
+                <div class="product-info">
+                    <div class="product-name">سالاد سزار</div>
+                    <div class="product-price">۷.۵۰ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">کاهوی ترد با نان سیر، پنیر پارمزان و سس سزار.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🌾</span>گلوتن</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>لبنی</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥚</span>تخم مرغ</span>
+                        <span class="allergy-item"><span class="allergy-icon">🐟</span>ماهی</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="Appetizers" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?bruschetta');"></div>
+                <div class="product-info">
+                    <div class="product-name">بروشتا</div>
+                    <div class="product-price">۶.۰۰ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">نان تست شده با گوجه فرنگی و ریحان.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🌾</span>گلوتن</span>
+                        <span class="allergy-item"><span class="allergy-icon">🍅</span>گوجه فرنگی</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Courses -->
+            <div class="product-card" data-category="Main Courses" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?club+sandwich');"></div>
+                <div class="product-info">
+                    <div class="product-name">ساندویچ کلاب</div>
+                    <div class="product-price">۸.۹۹ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">لایه‌های بوقلمون، بیکن، کاهو، گوجه فرنگی و مایونز روی نان تست شده. سرو شده با سیب زمینی سرخ کرده.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🌾</span>گلوتن</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥚</span>تخم مرغ</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥓</span>گوشت خوک</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="Main Courses" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?pasta+alfredo');"></div>
+                <div class="product-info">
+                    <div class="product-name">پاستا آلفردو</div>
+                    <div class="product-price">۱۲.۹۹ دلار <del>۱۴.۰۰ دلار</del></div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">پاستای فتوچینی خامه‌ای با پنیر پارمزان و سیر.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🌾</span>گلوتن</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>لبنی</span>
+                        <span class="allergy-item"><span class="allergy-icon">🧄</span>سیر</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="product-card" data-category="Desserts" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?chocolate+cake');"></div>
+                <div class="product-info">
+                    <div class="product-name">کیک شکلاتی</div>
+                    <div class="product-price">۵.۵۰ دلار <del>۶.۰۰ دلار</del></div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">کیک شکلاتی خوشمزه با یخچال شکلاتی. یک خوراکی شیرین برای هر مناسبتی.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🌾</span>گلوتن</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>لبنی</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥚</span>تخم مرغ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="Desserts" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?cheesecake');"></div>
+                <div class="product-info">
+                    <div class="product-name">چیزکیک</div>
+                    <div class="product-price">۶.۰۰ دلار</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">چیزکیک کلاسیک نیویورک با خمیر بیسکوئیت.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🌾</span>گلوتن</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥛</span>لبنی</span>
+                        <span class="allergy-item"><span class="allergy-icon">🥚</span>تخم مرغ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specials -->
+            <div class="product-card" data-category="Specials" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?sushi');"></div>
+                <div class="product-info">
+                    <div class="product-name">سوشی رول</div>
+                    <div class="product-price">۱۰.۰۰ دلار <del>۱۲.۰۰ دلار</del></div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">سوشی رول تازه.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">🐟</span>ماهی</span>
+                        <span class="allergy-item"><span class="allergy-icon">🌾</span>گلوتن</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Features -->
+            <div class="product-card" data-category="Books" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?book,mystery');"></div>
+                <div class="product-info">
+                    <div class="product-name">گتسبی بزرگ</div>
+                    <div class="product-price">اف. اسکات فیتزجرالد</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">رمان کلاسیک درباره رویای آمریکایی.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">📖</span>داستانی</span>
+                        <span class="allergy-item"><span class="allergy-icon">📅</span>۱۹۲۵</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="Books" draggable="true">
+                <div class="drag-boundary left"></div>
+                <div class="drag-boundary right"></div>
+                <div class="product-image" style="background-image: url('https://source.unsplash.com/featured/?book,fantasy');"></div>
+                <div class="product-info">
+                    <div class="product-name">هری پاتر</div>
+                    <div class="product-price">جی. کی. رولینگ</div>
+                </div>
+                <div class="product-details">
+                    <div class="product-description">دنیای جادویی جادوگران و ماجراجویی.</div>
+                    <div class="product-allergies">
+                        <span class="allergy-item"><span class="allergy-icon">📖</span>فانتزی</span>
+                        <span class="allergy-item"><span class="allergy-icon">📅</span>۱۹۹۷</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
 
-    <!-- ==================== Category Filter ==================== -->
-    <nav class="category-filter" role="navigation" aria-label="فیلتر دسته‌بندی">
-        <div class="category-tabs" id="categoryTabs">
-            <button class="category-btn active" data-category="all"> 🌟 همه محصولات </button>
-            <button class="category-btn" data-category="coffee"> ☕ قهوه‌های ویژه </button>
-            <button class="category-btn" data-category="cold-drinks"> 🧊 نوشیدنی‌های سرد </button>
-            <button class="category-btn" data-category="hot-drinks"> 🍵 نوشیدنی‌های گرم </button>
-            <button class="category-btn" data-category="breakfast"> 🍳 صبحانه </button>
-            <button class="category-btn" data-category="sandwiches"> 🥪 ساندویچ‌ها </button>
-            <button class="category-btn" data-category="desserts"> 🍰 دسرها </button>
+        <!-- Special Info Sections -->
+        <div class="info-container">
+            <div class="info-section">
+                <h2>ویژگی‌های کافه</h2>
+                <ul>
+                    <li>وای‌فای رایگان: دسترسی به اینترنت پرسرعت برای همه مهمانان.</li>
+                    <li>گوشه‌های مطالعه دنج: مکان‌های راحت برای لذت بردن از کتابتان.</li>
+                    <li>قهوه دست‌ساز: مخلوط‌های قهوه مرغوب از سراسر جهان.</li>
+                    <li>رویدادهای کتاب: جلسات کتاب‌خوانی و ملاقات با نویسندگان به‌طور منظم.</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>آدرس</h2>
+                <p>خیابان کتاب، شهر ادبیات، استان داستان، ۴۵۶۷۸</p>
+                <a class="address-map" href="https://maps.google.com/?q=123+Book+Street,+Literature+City" target="_blank">نمایش روی نقشه</a>
+            </div>
+
+            <!-- Hours Card moved to bottom -->
+            <div class="hours-card">
+                <div class="hours-header">
+                    <div class="status-indicator" id="statusIndicator"></div>
+                    <h4>ساعات کاری کافه</h4>
+                </div>
+                <p class="time">09:00 — 22:00</p>
+                <div class="status" id="statusText"></div>
+                <div class="next-opening" id="nextOpening"></div>
+            </div>
         </div>
-    </nav>
-
-    <!-- ==================== Results Counter ==================== -->
-    <div class="results-info" id="resultsInfo">
-        در حال نمایش <span id="resultCount">30</span> محصول
     </div>
 
-    <!-- ==================== Products Container ==================== -->
-    <main class="products-container">
-        <div class="products-grid" id="productsGrid">
-            <!-- Products will be rendered here by JavaScript -->
-        </div>
-    </main>
-
-    <!-- ==================== Info Sections ==================== -->
-    <div class="info-sections">
-        <!-- Hours Section -->
-        <section class="info-section">
-            <h2 class="section-title">🕒 ساعت کاری</h2>
-            <div class="hours-grid">
-                <div class="hour-item">
-                    <span class="day">شنبه تا چهارشنبه</span>
-                    <span class="time">۷:۰۰ صبح تا ۱۱:۰۰ شب</span>
-                </div>
-                <div class="hour-item">
-                    <span class="day">پنجشنبه</span>
-                    <span class="time">۷:۰۰ صبح تا ۱۲:۰۰ شب</span>
-                </div>
-                <div class="hour-item">
-                    <span class="day">جمعه</span>
-                    <span class="time">۸:۰۰ صبح تا ۱۲:۰۰ شب</span>
-                </div>
-                <div class="hour-item">
-                    <span class="day">تعطیلات رسمی</span>
-                    <span class="time">۹:۰۰ صبح تا ۱۰:۰۰ شب</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section class="info-section">
-            <h2 class="section-title">📸 گالری محیط کافه</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FmZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="فضای داخلی کافه">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FmZSUyMGludGVyaW9yfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="محیط دنج کافه">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2FmZSUyMGludGVyaW9yfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="میزهای کافه">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhZmUlMjBpbnRlcmlvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="فضای مطالعه کافه">
-                </div>
-            </div>
-        </section>
-
-        <!-- Amenities Section -->
-        <section class="info-section">
-            <h2 class="section-title">✨ امکانات کافه</h2>
-            <div class="amenities-grid">
-                <div class="amenity-item">
-                    <div class="amenity-icon">📶</div>
-                    <div class="amenity-text">
-                        <h4>اینترنت پرسرعت رایگان</h4>
-                        <p>دسترسی به وای‌فای پرسرعت برای تمام مشتریان</p>
-                    </div>
-                </div>
-                <div class="amenity-item">
-                    <div class="amenity-icon">🔌</div>
-                    <div class="amenity-text">
-                        <h4>پریز برق اختصاصی</h4>
-                        <p>پریز برق در کنار هر میز برای شارژ دستگاه‌ها</p>
-                    </div>
-                </div>
-                <div class="amenity-item">
-                    <div class="amenity-icon">📚</div>
-                    <div class="amenity-text">
-                        <h4>کتابخانه کوچک</h4>
-                        <p>انتخابی از کتاب‌های متنوع برای مطالعه</p>
-                    </div>
-                </div>
-                <div class="amenity-item">
-                    <div class="amenity-icon">🎵</div>
-                    <div class="amenity-text">
-                        <h4>موسیقی زنده آخر هفته</h4>
-                        <p>اجرای موسیقی زنده در شب‌های پنجشنبه و جمعه</p>
-                    </div>
-                </div>
-                <div class="amenity-item">
-                    <div class="amenity-icon">🚗</div>
-                    <div class="amenity-text">
-                        <h4>پارکینگ رایگان</h4>
-                        <p>پارکینگ اختصاصی و رایگان برای مشتریان</p>
-                    </div>
-                </div>
-                <div class="amenity-item">
-                    <div class="amenity-icon">🐾</div>
-                    <div class="amenity-text">
-                        <h4>محیط حیوان‌دوست</h4>
-                        <p>امکان همراهی حیوانات خانگی در فضای تراس</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Study Section -->
-        <section class="study-section">
-            <h2 class="section-title">📚 بخش مطالعه</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">
-                برای مطالعه در محیط آرام کافه، کتاب‌های الکترونیکی زیر در اختیار شما قرار دارد. روی هر کتاب کلیک کنید تا فایل PDF آن در همین صفحه نمایش داده شود.
-            </p>
-            <div class="pdf-grid">
-                <div class="pdf-item" onclick="openPDF('https://docs.google.com/gview?embedded=true&url=https://raw.githubusercontent.com/starfox1official/Menu/main/1500.pdf', 'کتاب اول')">
-                    <div class="pdf-cover">
-                        <div class="pdf-icon">📖</div>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">کتاب اول</h3>
-                        <p class="pdf-description">یک کتاب ارزشمند برای مطالعه در محیط آرام کافه. مناسب برای علاقه‌مندان به کتاب‌خوانی و یادگیری.</p>
-                        <button class="pdf-download">
-                            <span>مطالعه کتاب</span>
-                            <span>📘</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="pdf-item" onclick="openPDF('https://docs.google.com/gview?embedded=true&url=https://raw.githubusercontent.com/starfox1official/Menu/main/1_10397164681.pdf', 'کتاب دوم')">
-                    <div class="pdf-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <div class="pdf-icon">📖</div>
-                    </div>
-                    <div class="pdf-info">
-                        <h3 class="pdf-title">کتاب دوم</h3>
-                        <p class="pdf-description">منبعی غنی از دانش و اطلاعات مفید که تجربه مطالعه لذت‌بخشی را برای شما به ارمغان می‌آورد.</p>
-                        <button class="pdf-download">
-                            <span>مطالعه کتاب</span>
-                            <span>📘</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ==================== PDF Viewer Modal ==================== -->
-    <div class="pdf-modal" id="pdfModal">
-        <div class="pdf-modal-content">
-            <div class="pdf-modal-header">
-                <h3 class="pdf-modal-title" id="pdfModalTitle">کتاب</h3>
-                <button class="pdf-modal-close" id="pdfModalClose">✕</button>
-            </div>
-            <div class="pdf-modal-body">
-                <iframe class="pdf-iframe" id="pdfIframe" src="" frameborder="0"></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== Footer ==================== -->
-    <footer class="footer">
-        <div class="footer-content">
-            <h3>کافه نوش‌جان</h3>
-            <p>لذت‌بخش‌ترین تجربه نوشیدنی و خوراکی</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">
-                © 2024 تمامی حقوق محفوظ است | طراحی شده با ❤️
-            </p>
-        </div>
-    </footer>
-
-    <!-- ==================== JavaScript ==================== -->
     <script>
-        // ==================== Products Data ====================
-        const productsData = [
-            // قهوه‌های ویژه (5 محصول)
-            { 
-                id: 1, 
-                name: 'اسپرسو دوبل ایتالیایی', 
-                description: 'قهوه اسپرسو غلیظ و خوش‌طعم با دانه‌های تازه برشته‌شده آرابیکا که به صورت دستی و با دقت بالا آماده می‌شود. این نوشیدنی برای کسانی که عطر و طعم قهوه اصل را می‌پسندند ایده‌آل است.', 
-                price: 85000, 
-                category: 'coffee', 
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZXNwcmVzc298ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60', 
-                badge: 'popular', 
-                tags: ['اسپرسو', 'قهوه', 'ایتالیایی'],
-                ingredients: [
-                    { name: 'دانه قهوه آرابیکا', icon: '☕' },
-                    { name: 'آب تصفیه شده', icon: '💧' }
-                ]
-            },
-            { 
-                id: 2, 
-                name: 'کاپوچینو کلاسیک', 
-                description: 'ترکیب هماهنگ اسپرسو با شیر بخار داده‌شده و فوم ملایم که به صورت لایه‌ای سرو می‌شود. این نوشیدنی متعادل برای تمام ساعات روز مناسب است.', 
-                price: 95000, 
-                category: 'coffee', 
-                image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FwcHVjY2lub3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60', 
-                badge: 'popular', 
-                tags: ['کاپوچینو', 'قهوه', 'شیر'],
-                ingredients: [
-                    { name: 'اسپرسو', icon: '☕' },
-                    { name: 'شیر تازه', icon: '🥛' },
-                    { name: 'فوم شیر', icon: '☁️' }
-                ]
-            },
-            { 
-                id: 3, 
-                name: 'لاته وانیل فرانسوی', 
-                description: 'اسپرسو با شیر داغ و سیروپ وانیل اصل با طعمی دلنشین که ترکیبی عالی از قهوه و طعم شیرین وانیل ارائه می‌دهد. مناسب برای علاقه‌مندان به طعم‌های شیرین.', 
-                price: 105000, 
-                category: 'coffee', 
-                image: 'https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxhdHRlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60', 
-                badge: 'new', 
-                tags: ['لاته', 'وانیل', 'قهوه'],
-                ingredients: [
-                    { name: 'اسپرسو', icon: '☕' },
-                    { name: 'شیر داغ', icon: '🥛' },
-                    { name: 'سیروپ وانیل', icon: '🍯' }
-                ]
-            },
-            { 
-                id: 4, 
-                name: 'موکا شکلاتی لوکس', 
-                description: 'قهوه اسپرسو با شکلات بلژیکی و شیر داغ تزئین شده با خامه. این نوشیدنی ترکیبی بی‌نظیر از قهوه و شکلات است که طرفداران زیادی دارد.', 
-                price: 115000, 
-                category: 'coffee', 
-                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW9jaGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60', 
-                badge: null, 
-                tags: ['موکا', 'شکلات', 'قهوه'],
-                ingredients: [
-                    { name: 'اسپرسو', icon: '☕' },
-                    { name: 'شکلات بلژیکی', icon: '🍫' },
-                    { name: 'شیر داغ', icon: '🥛' },
-                    { name: 'خامه زده', icon: '🍦' }
-                ]
-            },
-            { 
-                id: 5, 
-                name: 'آمریکانو مخملی', 
-                description: 'اسپرسو رقیق‌شده با آب داغ برای طعمی ملایم و گیرا. این نوشیدنی برای کسانی که قهوه‌ای ملایم‌تر ولی با عطر کامل می‌پسندند مناسب است.', 
-                price: 75000, 
-                category: 'coffee', 
-                image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW1lcmljYW5vfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60', 
-                badge: null, 
-                tags: ['آمریکانو', 'قهوه', 'ساده'],
-                ingredients: [
-                    { name: 'اسپرسو', icon: '☕' },
-                    { name: 'آب داغ', icon: '💧' }
-                ]
-            },
-            // 25 محصول دیگر به همین شکل ادامه می‌یابند...
-        ];
-
-        // ==================== State Management ====================
-        let currentCategory = 'all';
-        let searchQuery = '';
-        let filteredProducts = [...productsData];
-        let debounceTimer = null;
-
-        // ==================== DOM Elements ====================
-        const productsGrid = document.getElementById('productsGrid');
-        const searchInput = document.getElementById('searchInput');
-        const categoryTabs = document.getElementById('categoryTabs');
-        const themeToggle = document.getElementById('themeToggle');
-        const resultCount = document.getElementById('resultCount');
-        const pdfModal = document.getElementById('pdfModal');
-        const pdfIframe = document.getElementById('pdfIframe');
-        const pdfModalTitle = document.getElementById('pdfModalTitle');
-        const pdfModalClose = document.getElementById('pdfModalClose');
-
-        // ==================== Utility Functions ====================
-        // Format Price
-        function formatPrice(price) {
-            return price.toLocaleString('fa-IR');
+        // Initialize favorites from localStorage
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        // Hours management
+        function updateHoursStatus() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
+            const currentTime = currentHour * 60 + currentMinute; // Convert to minutes for easier comparison
+            
+            const openTime = 9 * 60; // 09:00 in minutes
+            const closeTime = 22 * 60; // 22:00 in minutes
+            
+            const isOpen = currentTime >= openTime && currentTime < closeTime;
+            
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            const nextOpening = document.getElementById('nextOpening');
+            
+            if (isOpen) {
+                statusIndicator.className = 'status-indicator status-open';
+                statusText.className = 'status status-open-text';
+                statusText.textContent = 'هم اکنون باز است';
+                nextOpening.textContent = `تا ساعت ۲۲:۰۰ باز است`;
+            } else {
+                statusIndicator.className = 'status-indicator status-closed';
+                statusText.className = 'status status-closed-text';
+                statusText.textContent = 'هم اکنون بسته است';
+                
+                // Calculate next opening time
+                let nextOpenTime;
+                if (currentTime < openTime) {
+                    // Will open later today
+                    nextOpenTime = `فردا ساعت ۰۹:۰۰`;
+                } else {
+                    // Will open tomorrow
+                    nextOpenTime = `فردا ساعت ۰۹:۰۰`;
+                }
+                nextOpening.textContent = `بازگشایی: ${nextOpenTime}`;
+            }
         }
-
-        // Get Badge HTML - حذف برچسب سرآشپز
-        function getBadgeHTML(badge) {
-            if (!badge) return '';
-            const badgeLabels = {
-                'new': 'جدید',
-                'popular': 'پرطرفدار'
-            };
-            return `<div class="product-badge badge-${badge}">${badgeLabels[badge]}</div>`;
-        }
-
-        // Highlight search term
-        function highlightText(text, query) {
-            if (!query) return text;
-            const regex = new RegExp(`(${query})`, 'gi');
-            return text.replace(regex, '<mark>$1</mark>');
-        }
-
-        // Open PDF in modal using Google Docs Viewer
-        function openPDF(url, title) {
-            pdfModalTitle.textContent = title;
-            pdfIframe.src = url;
-            pdfModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close PDF modal
-        function closePDF() {
-            pdfModal.classList.remove('active');
-            pdfIframe.src = '';
-            document.body.style.overflow = 'auto';
-        }
-
-        // ==================== Render Functions ====================
-        // Render Skeleton Loading
-        function renderSkeleton() {
-            productsGrid.innerHTML = '';
-            for (let i = 0; i < 8; i++) {
-                const skeleton = document.createElement('div');
-                skeleton.className = 'skeleton skeleton-card';
-                productsGrid.appendChild(skeleton);
+        
+        // Initialize hours status
+        updateHoursStatus();
+        // Update every minute
+        setInterval(updateHoursStatus, 60000);
+        
+        function toggleDetails(card) {
+            if (!card.classList.contains('dragging')) {
+                card.classList.toggle('expanded');
+                
+                // نمایش یا پنهان کردن توضیحات
+                const details = card.querySelector('.product-details');
+                if (card.classList.contains('expanded')) {
+                    details.classList.add('active');
+                } else {
+                    details.classList.remove('active');
+                }
             }
         }
 
-        // Render Empty State
-        function renderEmptyState() {
-            productsGrid.innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-state-icon">🔍</div>
-                    <h3>محصولی یافت نشد</h3>
-                    <p>متأسفانه محصولی با این مشخصات پیدا نکردیم. لطفاً جستجوی دیگری امتحان کنید.</p>
-                </div>
-            `;
+        // Category filtering
+        const tabs = document.querySelectorAll('.category-tab');
+        const cards = document.querySelectorAll('.product-card');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const category = tab.getAttribute('data-category');
+                filterProducts(category);
+            });
+        });
+
+        function filterProducts(category) {
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const productName = card.querySelector('.product-name').textContent;
+                
+                if (category === 'Favorites') {
+                    // Show only favorited items
+                    if (favorites.includes(productName)) {
+                        card.style.display = 'block';
+                        void card.offsetWidth;
+                        card.classList.add('visible');
+                    } else {
+                        card.classList.remove('visible');
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                } else if (cardCategory === category) {
+                    card.style.display = 'block';
+                    void card.offsetWidth;
+                    card.classList.add('visible');
+                } else {
+                    card.classList.remove('visible');
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Update favorite indicators
+            updateFavoriteIndicators();
         }
 
-        // Render Products
-        function renderProducts(products) {
-            if (products.length === 0) {
-                renderEmptyState();
-                return;
-            }
+        // Initial filter to show the active category
+        filterProducts('Drinks');
 
-            productsGrid.innerHTML = products.map(product => {
-                const isMatching = !searchQuery || 
-                    product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                    product.description.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                    product.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-                
-                const nonMatchingClass = (currentCategory !== 'all' && searchQuery && !isMatching) ? 'non-matching' : '';
-                
-                const detailsHTML = `
-                    <div class="product-details">
-                        <div class="details-section">
-                            <div class="details-title">
-                                <span>📝 توضیحات</span>
-                            </div>
-                            <p class="product-description">${highlightText(product.description, searchQuery)}</p>
-                        </div>
-                        
-                        <div class="details-section">
-                            <div class="details-title">
-                                <span>🧪 مواد تشکیل دهنده</span>
-                            </div>
-                            <div class="ingredients-list">
-                                ${product.ingredients.map(ingredient => `
-                                    <div class="ingredient-item">
-                                        <span>${ingredient.icon}</span>
-                                        <span>${ingredient.name}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                return `
-                <article class="product-card ${nonMatchingClass}" data-category="${product.category}" data-id="${product.id}">
-                    <div class="product-image" style="background-image: url('${product.image}')">
-                        ${getBadgeHTML(product.badge)}
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${highlightText(product.name, searchQuery)}</h3>
-                        <div class="product-price">${formatPrice(product.price)} تومان</div>
-                    </div>
-                    ${detailsHTML}
-                </article>
-                `;
-            }).join('');
+        // Search functionality
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('keyup', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+            cards.forEach(card => {
+                if (card.getAttribute('data-category') === activeCategory || 
+                    (activeCategory === 'Favorites' && favorites.includes(card.querySelector('.product-name').textContent))) {
+                    const name = card.querySelector('.product-name').textContent.toLowerCase();
+                    const description = card.querySelector('.product-description').textContent.toLowerCase();
+                    if (name.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        void card.offsetWidth;
+                        card.classList.add('visible');
+                    } else {
+                        card.classList.remove('visible');
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                }
+            });
+        });
 
-            // Add click event listeners to product cards
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    // Close other open cards
-                    document.querySelectorAll('.product-card.active').forEach(activeCard => {
-                        if (activeCard !== this) {
-                            activeCard.classList.remove('active');
-                        }
-                    });
+        // Improved drag functionality for favorites
+        cards.forEach(card => {
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            let heart = null;
+            let cross = null;
+
+            // Create heart and cross elements initially but hidden
+            heart = document.createElement('div');
+            heart.classList.add('heart-overlay');
+            heart.innerHTML = '❤️';
+            card.appendChild(heart);
+            
+            cross = document.createElement('div');
+            cross.classList.add('cross-overlay');
+            cross.innerHTML = '❌';
+            card.appendChild(cross);
+
+            card.addEventListener('dragstart', (e) => {
+                card.classList.add('dragging');
+                card.classList.add('show-boundaries');
+                isDragging = true;
+                startX = e.clientX || e.touches[0].clientX;
+                card.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+                card.addEventListener('click', preventClick, true);
+                
+                // بهبود عملکرد کشیدن
+                e.dataTransfer.setData('text/plain', '');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            card.addEventListener('drag', (e) => {
+                if (!isDragging) return;
+                
+                currentX = e.clientX || (e.touches && e.touches[0].clientX);
+                if (currentX) {
+                    const diff = startX - currentX;
+                    const productName = card.querySelector('.product-name').textContent;
+                    const isFavorite = favorites.includes(productName);
                     
-                    // Toggle current card
-                    this.classList.toggle('active');
-                });
+                    // If dragging to the right (in RTL) more than 30px and item is not favorite
+                    if (diff > 30 && !isFavorite) {
+                        card.classList.add('show-heart');
+                        card.classList.remove('show-cross');
+                        
+                        // Calculate how much to move the card based on drag distance
+                        // Limit movement to 120px maximum
+                        const moveDistance = Math.min(diff * 0.7, 120);
+                        card.style.transform = `translateX(-${moveDistance}px)`;
+                        
+                        // Gradually fade out as it moves
+                        const opacity = Math.max(0.3, 1 - (moveDistance / 120) * 0.7);
+                        card.style.opacity = opacity;
+                    } 
+                    // If dragging to the left (in RTL) more than 30px and item is favorite
+                    else if (diff < -30 && isFavorite) {
+                        card.classList.add('show-cross');
+                        card.classList.remove('show-heart');
+                        
+                        // Calculate how much to move the card based on drag distance
+                        // Limit movement to 120px maximum
+                        const moveDistance = Math.min(Math.abs(diff) * 0.7, 120);
+                        card.style.transform = `translateX(${moveDistance}px)`;
+                        
+                        // Gradually fade out as it moves
+                        const opacity = Math.max(0.3, 1 - (moveDistance / 120) * 0.7);
+                        card.style.opacity = opacity;
+                    } else {
+                        card.classList.remove('show-heart');
+                        card.classList.remove('show-cross');
+                        card.style.transform = 'translateX(0)';
+                        card.style.opacity = '1';
+                    }
+                }
             });
-        }
 
-        // ==================== Filter Functions ====================
-        // Filter Products
-        function filterProducts() {
-            filteredProducts = productsData.filter(product => {
-                // Category Filter
-                const categoryMatch = currentCategory === 'all' || product.category === currentCategory;
-
-                // Search Filter
-                const searchMatch = !searchQuery || 
-                    product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                    product.description.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                    product.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-
-                return categoryMatch && searchMatch;
+            card.addEventListener('dragend', (e) => {
+                isDragging = false;
+                card.classList.remove('dragging');
+                card.classList.remove('show-boundaries');
+                card.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease';
+                
+                const endX = e.clientX || (e.changedTouches && e.changedTouches[0].clientX);
+                if (endX) {
+                    const diff = startX - endX;
+                    const productName = card.querySelector('.product-name').textContent;
+                    const isFavorite = favorites.includes(productName);
+                    
+                    // If dragged enough to the right (more than 80px) and item is not favorite
+                    if (diff > 80 && !isFavorite) {
+                        heart.classList.add('heart-filled');
+                        
+                        // Animate card moving out of view and fading out
+                        card.style.transform = 'translateX(-300px)';
+                        card.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            addToFavorites(productName);
+                            
+                            // Reset card after animation
+                            setTimeout(() => {
+                                card.style.transform = '';
+                                card.style.opacity = '';
+                                card.style.transition = '';
+                                card.classList.remove('show-heart');
+                                heart.classList.remove('heart-filled');
+                                updateFavoriteIndicators();
+                            }, 600);
+                        }, 400);
+                    } 
+                    // If dragged enough to the left (more than 80px) and item is favorite
+                    else if (diff < -80 && isFavorite) {
+                        cross.classList.add('cross-filled');
+                        
+                        // Animate card moving out of view and fading out
+                        card.style.transform = 'translateX(300px)';
+                        card.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            removeFromFavorites(productName);
+                            
+                            // Reset card after animation
+                            setTimeout(() => {
+                                card.style.transform = '';
+                                card.style.opacity = '';
+                                card.style.transition = '';
+                                card.classList.remove('show-cross');
+                                cross.classList.remove('cross-filled');
+                                updateFavoriteIndicators();
+                                
+                                // If we're in the Favorites category, hide the card
+                                const activeCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+                                if (activeCategory === 'Favorites') {
+                                    card.style.display = 'none';
+                                }
+                            }, 600);
+                        }, 400);
+                    } else {
+                        // Smoothly reset card position and opacity
+                        card.style.transform = 'translateX(0)';
+                        card.style.opacity = '1';
+                        card.classList.remove('show-heart');
+                        card.classList.remove('show-cross');
+                    }
+                }
+                
+                // Remove click blocker immediately if not triggering favorite action
+                card.removeEventListener('click', preventClick, true);
             });
 
-            // Update result count
-            resultCount.textContent = filteredProducts.length.toLocaleString('fa-IR');
-
-            // Render
-            renderProducts(filteredProducts);
-        }
-
-        // ==================== Event Handlers ====================
-        // Category Click Handler
-        function handleCategoryClick(e) {
-            if (!e.target.classList.contains('category-btn')) return;
-
-            // Update active state
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
+            // Add touch events for mobile devices
+            card.addEventListener('touchstart', (e) => {
+                card.classList.add('dragging');
+                card.classList.add('show-boundaries');
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                card.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+                card.addEventListener('click', preventClick, true);
             });
-            e.target.classList.add('active');
 
-            // Update current category
-            currentCategory = e.target.dataset.category;
+            card.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                
+                currentX = e.touches[0].clientX;
+                const diff = startX - currentX;
+                const productName = card.querySelector('.product-name').textContent;
+                const isFavorite = favorites.includes(productName);
+                
+                // If dragging to the right (in RTL) more than 30px and item is not favorite
+                if (diff > 30 && !isFavorite) {
+                    card.classList.add('show-heart');
+                    card.classList.remove('show-cross');
+                    
+                    // Calculate how much to move the card based on drag distance
+                    // Limit movement to 120px maximum
+                    const moveDistance = Math.min(diff * 0.7, 120);
+                    card.style.transform = `translateX(-${moveDistance}px)`;
+                    
+                    // Gradually fade out as it moves
+                    const opacity = Math.max(0.3, 1 - (moveDistance / 120) * 0.7);
+                    card.style.opacity = opacity;
+                } 
+                // If dragging to the left (in RTL) more than 30px and item is favorite
+                else if (diff < -30 && isFavorite) {
+                    card.classList.add('show-cross');
+                    card.classList.remove('show-heart');
+                    
+                    // Calculate how much to move the card based on drag distance
+                    // Limit movement to 120px maximum
+                    const moveDistance = Math.min(Math.abs(diff) * 0.7, 120);
+                    card.style.transform = `translateX(${moveDistance}px)`;
+                    
+                    // Gradually fade out as it moves
+                    const opacity = Math.max(0.3, 1 - (moveDistance / 120) * 0.7);
+                    card.style.opacity = opacity;
+                } else {
+                    card.classList.remove('show-heart');
+                    card.classList.remove('show-cross');
+                    card.style.transform = 'translateX(0)';
+                    card.style.opacity = '1';
+                }
+                
+                // جلوگیری از اسکرول صفحه هنگام کشیدن
+                e.preventDefault();
+            });
 
-            // Filter and render
-            filterProducts();
-        }
+            card.addEventListener('touchend', (e) => {
+                isDragging = false;
+                card.classList.remove('dragging');
+                card.classList.remove('show-boundaries');
+                card.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease';
+                
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                const productName = card.querySelector('.product-name').textContent;
+                const isFavorite = favorites.includes(productName);
+                
+                // If dragged enough to the right (more than 80px) and item is not favorite
+                if (diff > 80 && !isFavorite) {
+                    heart.classList.add('heart-filled');
+                    
+                    // Animate card moving out of view and fading out
+                    card.style.transform = 'translateX(-300px)';
+                    card.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        addToFavorites(productName);
+                        
+                        // Reset card after animation
+                        setTimeout(() => {
+                            card.style.transform = '';
+                            card.style.opacity = '';
+                            card.style.transition = '';
+                            card.classList.remove('show-heart');
+                            heart.classList.remove('heart-filled');
+                            updateFavoriteIndicators();
+                        }, 600);
+                    }, 400);
+                } 
+                // If dragged enough to the left (more than 80px) and item is favorite
+                else if (diff < -80 && isFavorite) {
+                    cross.classList.add('cross-filled');
+                    
+                    // Animate card moving out of view and fading out
+                    card.style.transform = 'translateX(300px)';
+                    card.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        removeFromFavorites(productName);
+                        
+                        // Reset card after animation
+                        setTimeout(() => {
+                            card.style.transform = '';
+                            card.style.opacity = '';
+                            card.style.transition = '';
+                            card.classList.remove('show-cross');
+                            cross.classList.remove('cross-filled');
+                            updateFavoriteIndicators();
+                            
+                            // If we're in the Favorites category, hide the card
+                            const activeCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+                            if (activeCategory === 'Favorites') {
+                                card.style.display = 'none';
+                            }
+                        }, 600);
+                    }, 400);
+                } else {
+                    // Smoothly reset card position and opacity
+                    card.style.transform = 'translateX(0)';
+                    card.style.opacity = '1';
+                    card.classList.remove('show-heart');
+                    card.classList.remove('show-cross');
+                }
+                
+                // Remove click blocker immediately if not triggering favorite action
+                card.removeEventListener('click', preventClick, true);
+            });
 
-        // Search Input Handler with Debounce
-        function handleSearchInput(e) {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                searchQuery = e.target.value.trim();
-                filterProducts();
-            }, 300);
-        }
-
-        // Theme Toggle Handler
-        function handleThemeToggle() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            themeToggle.textContent = newTheme === 'light' ? '☀️' : '🌙';
-
-            // Save to localStorage
-            localStorage.setItem('theme', newTheme);
-        }
-
-        // ==================== Event Listeners ====================
-        categoryTabs.addEventListener('click', handleCategoryClick);
-        searchInput.addEventListener('input', handleSearchInput);
-        themeToggle.addEventListener('click', handleThemeToggle);
-        pdfModalClose.addEventListener('click', closePDF);
-
-        // Close modal when clicking outside
-        pdfModal.addEventListener('click', function(e) {
-            if (e.target === pdfModal) {
-                closePDF();
-            }
+            card.addEventListener('click', () => toggleDetails(card));
         });
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
-                closePDF();
+        function preventClick(e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        function addToFavorites(name) {
+            if (!favorites.includes(name)) {
+                favorites.push(name);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
             }
-        });
+            
+            // Show notification
+            showNotification(`"${name}" به علاقه‌مندی‌ها اضافه شد`, false);
+        }
+        
+        function removeFromFavorites(name) {
+            const index = favorites.indexOf(name);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+            }
+            
+            // Show notification
+            showNotification(`"${name}" از علاقه‌مندی‌ها حذف شد`, true);
+        }
 
-        // ==================== Initialization ====================
-        function init() {
-            // Load saved theme
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            themeToggle.textContent = savedTheme === 'light' ? '☀️' : '🌙';
-
-            // Show skeleton loading
-            renderSkeleton();
-
-            // Simulate loading delay for better UX
+        function showNotification(message, isError) {
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            if (isError) {
+                notification.classList.add('error');
+            }
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Trigger animation
             setTimeout(() => {
-                filterProducts();
-            }, 500);
+                notification.classList.add('show');
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
 
-            // Add keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === '/' && e.target.tagName !== 'INPUT') {
-                    e.preventDefault();
-                    searchInput.focus();
+        function updateFavoriteIndicators() {
+            // Remove all existing indicators
+            document.querySelectorAll('.favorite-indicator').forEach(indicator => {
+                indicator.remove();
+            });
+            
+            // Add indicators to favorited items
+            cards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent;
+                if (favorites.includes(productName)) {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('favorite-indicator');
+                    indicator.innerHTML = '❤️';
+                    card.appendChild(indicator);
                 }
             });
         }
 
-        // Start application
-        init();
+        // Scroll animation using Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Initialize favorite indicators
+        updateFavoriteIndicators();
     </script>
 </body>
 </html>
